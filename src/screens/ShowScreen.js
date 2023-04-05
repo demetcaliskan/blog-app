@@ -10,6 +10,7 @@ const ShowScreen = ({ route }) => {
     <>
       <Text>Show Screen</Text>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
     </>
   )
 }
