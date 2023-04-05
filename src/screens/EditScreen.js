@@ -16,7 +16,7 @@ const EditScreen = ({ route }) => {
         buttonText={'Edit Blog Post'}
         onSubmit={(title, content) =>
           editBlogPost(id, title, content, () => {
-            navigation.navigate('Index')
+            navigation.pop()
           })
         }
       />
