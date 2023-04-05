@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -7,7 +7,17 @@ import { Feather } from '@expo/vector-icons'
 
 const IndexScreen = () => {
   const navigation = useNavigation()
-  const { state, deleteBlogPost } = useContext(Context)
+  const { state, getBlogPosts, deleteBlogPost } = useContext(Context)
+
+  useEffect(() => {
+    getBlogPosts()
+
+    const listener = navigation.addListener('focus', () => {
+      getBlogPosts()
+    })
+    return listener
+  }, [])
+
   return (
     <>
       <FlatList
